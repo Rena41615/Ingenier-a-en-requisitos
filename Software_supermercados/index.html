@@ -2,32 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Supermercados</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="container">
+        <!-- Botón de modo oscuro -->
+        <button id="btn-tema" class="btn-tema" title="Cambiar tema">☀️</button>
+
         <h1>Inventario de Supermercados</h1>
+
+        <!-- Formulario -->
         <form id="form-producto">
             <input type="text" id="nombre" placeholder="Producto" required>
             <input type="number" id="cantidad" placeholder="Cantidad" min="1" required>
             <input type="text" id="sucursal" placeholder="Sucursal" required>
             <button type="submit">Agregar</button>
         </form>
+
+        <!-- Filtro -->
+        <div class="filtro-container">
+            <input type="text" id="filtro" placeholder="Filtrar por nombre o sucursal...">
+            <button id="btn-limpiar-filtro" title="Limpiar filtro">✖️</button>
+        </div>
+
+        <!-- Contador -->
+        <div class="contador">
+            Total: <span id="contador-productos">0</span> productos
+        </div>
+
+        <!-- Tabla -->
         <table id="tabla">
             <thead>
                 <tr>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Sucursal</th>
-                    <th>Eliminar</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Los productos aparecerán aquí -->
+                <!-- Productos aquí -->
             </tbody>
         </table>
+
+        <!-- Botones globales -->
+        <div class="botones-acciones">
+            <button id="btn-exportar-csv" class="btn-global">
+                📥 Exportar a Excel
+            </button>
+            <button id="btn-eliminar-todos" class="btn-global">
+                🗑️ Eliminar todos
+            </button>
+        </div>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>
